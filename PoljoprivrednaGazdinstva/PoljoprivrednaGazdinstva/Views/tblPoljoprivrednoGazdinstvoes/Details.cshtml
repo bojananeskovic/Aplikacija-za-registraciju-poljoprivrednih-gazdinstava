@@ -1,0 +1,56 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblPoljoprivrednoGazdinstvo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <h4>Informacije o poljoprivrednom gazdinstvu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Povrsina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Povrsina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDokumetacija.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDokumetacija.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblOsiguranje.VrstaOsiguranja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblOsiguranje.VrstaOsiguranja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRegistracija.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRegistracija.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblVlasnik.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblVlasnik.Adresa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.PoljoprivrednoGazdinstvoID }) |
+    @Html.ActionLink("Lista poljoprivrednih gazdinstava", "Index")
+</p>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblOsiguranje>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista osiguranja</h2>
+
+<p>
+    @Html.ActionLink("Kreiranje novog osiguranja", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrojPolise)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VrstaOsiguranja)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrojPolise)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VrstaOsiguranja)
+            </td>
+            <td>
+                @Html.ActionLink("Izmeni", "Edit", new { id = item.OsiguranjeID }) |
+                @Html.ActionLink("Detalji", "Details", new { id = item.OsiguranjeID }) |
+                @Html.ActionLink("Obrisi", "Delete", new { id = item.OsiguranjeID })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>
+

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblInstitucija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista institucija</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novu instituciju", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sediste)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sediste)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.InstitucijaID }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.InstitucijaID }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.InstitucijaID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>

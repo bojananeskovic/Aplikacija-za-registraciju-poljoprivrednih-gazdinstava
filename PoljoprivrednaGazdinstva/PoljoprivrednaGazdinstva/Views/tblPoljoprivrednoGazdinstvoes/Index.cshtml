@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblPoljoprivrednoGazdinstvo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista poljoprivrednih gazdinstava</h2>
+
+<p>
+    @Html.ActionLink("Kreiranje novog poljoprivrednog gazdinstva", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Povrsina)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblDokumetacija.Vrsta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblOsiguranje.VrstaOsiguranja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblRegistracija.Cena)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblVlasnik.Adresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Povrsina)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDokumetacija.Vrsta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblOsiguranje.VrstaOsiguranja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblRegistracija.Cena)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblVlasnik.Adresa)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.PoljoprivrednoGazdinstvoID }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.PoljoprivrednoGazdinstvoID }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.PoljoprivrednoGazdinstvoID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>

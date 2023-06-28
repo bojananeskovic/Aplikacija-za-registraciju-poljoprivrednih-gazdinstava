@@ -1,0 +1,72 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblVlasnik>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista vlasnika</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novog vlasnika", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblDokumetacija.Vrsta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prezime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblDokumetacija.Vrsta)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.VlasnikID }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.VlasnikID }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.VlasnikID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>

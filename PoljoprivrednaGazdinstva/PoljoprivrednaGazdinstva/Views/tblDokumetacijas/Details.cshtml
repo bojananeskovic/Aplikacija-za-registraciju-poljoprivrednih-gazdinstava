@@ -1,0 +1,57 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblDokumetacija
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Informacije o dokumentaciji</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumIzdavanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumIzdavanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumIsteka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumIsteka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEkspozitura.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEkspozitura.Adresa)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.DokumetID }) |
+    @Html.ActionLink("Lista dokumentacije", "Index")
+</p>

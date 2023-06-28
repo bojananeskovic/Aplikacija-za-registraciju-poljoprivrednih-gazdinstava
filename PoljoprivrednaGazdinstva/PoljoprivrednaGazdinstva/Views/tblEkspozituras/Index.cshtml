@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblEkspozitura>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista ekspozitura</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novu ekspozituru", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblInstitucija.Naziv)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Adresa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblInstitucija.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.EkspozituraID }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.EkspozituraID }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.EkspozituraID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>

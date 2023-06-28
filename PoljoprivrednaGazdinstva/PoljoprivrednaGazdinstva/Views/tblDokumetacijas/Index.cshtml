@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PoljoprivrednaGazdinstva.Models.tblDokumetacija>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista dokumentacije</h2>
+
+<p>
+    @Html.ActionLink("Kreiraj novu dokumentaciju", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumIzdavanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatumIsteka)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mesto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tblEkspozitura.Adresa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrsta)
+        </td>
+        <td>
+            @{
+                string formattedDate = item.DatumIzdavanja.HasValue ? item.DatumIzdavanja.Value.ToString("dd-MMM-yy") : string.Empty;
+            }
+            @formattedDate
+        </td>
+        <td>
+            @{
+                string formattedDate1 = item.DatumIsteka.HasValue ? item.DatumIsteka.Value.ToString("dd-MMM-yy") : string.Empty;
+            }
+            @formattedDate1
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mesto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblEkspozitura.Adresa)
+        </td>
+        <td>
+            @Html.ActionLink("Izmeni", "Edit", new { id=item.DokumetID }) |
+            @Html.ActionLink("Detalji", "Details", new { id=item.DokumetID }) |
+            @Html.ActionLink("Obrisi", "Delete", new { id=item.DokumetID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Naslovna strana", "Index", "Home")
+</div>

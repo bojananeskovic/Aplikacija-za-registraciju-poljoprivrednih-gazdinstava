@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98b5fbd33296415e95a44917722996c7" Name="Diagram1">
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblDokumetacija" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblEkspozitura" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblInstitucija" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblKorisnik" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblOsiguranje" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblPoljoprivrednoGazdinstvo" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblRegistracija" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.tblVlasnik" Width="1.5" PointX="7.5" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwDokumentacija" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwEkspozitura" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwInstitucija" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwKorisnik" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwOsiguranje" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwPoljoprivrednoGazdinstvo" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwRegistracija" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RegistracijaPoljoprivrednihGazdinstavaModel.vwVlasnik" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblDokumetacija_tblEkspozitura" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblVlasnik_tblDokumetacija" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblEkspozitura_tblInstitucija" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblPoljoprivrednoGazdinstvo_tblRegistracija" ManuallyRouted="false" />
+        <AssociationConnector Association="RegistracijaPoljoprivrednihGazdinstavaModel.FK_tblPoljoprivrednoGazdinstvo_tblVlasnik" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

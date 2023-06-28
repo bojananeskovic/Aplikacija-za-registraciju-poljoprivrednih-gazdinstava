@@ -1,0 +1,63 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblPoljoprivrednoGazdinstvo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Brisanje poljoprivrednog gazdinstva</h2>
+
+<h3>Da li ste sigurni?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Povrsina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Povrsina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblDokumetacija.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblDokumetacija.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblOsiguranje.VrstaOsiguranja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblOsiguranje.VrstaOsiguranja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblRegistracija.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblRegistracija.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblVlasnik.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblVlasnik.Adresa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Lista poljoprivrednih gazdinstava", "Index")
+        </div>
+    }
+</div>

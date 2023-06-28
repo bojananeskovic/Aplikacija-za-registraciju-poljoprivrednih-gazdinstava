@@ -1,0 +1,63 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblDokumetacija
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Brisanje dokumentacije</h2>
+
+<h3>Da li ste sigurni?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumIzdavanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumIzdavanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumIsteka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumIsteka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mesto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mesto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblEkspozitura.Adresa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblEkspozitura.Adresa)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Lista dokumentacije", "Index")
+        </div>
+    }
+</div>

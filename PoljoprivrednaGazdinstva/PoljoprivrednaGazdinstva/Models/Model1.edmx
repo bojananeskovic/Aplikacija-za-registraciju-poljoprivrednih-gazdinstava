@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RegistracijaPoljoprivrednihGazdinstavaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblDokumetacija">
+          <Key>
+            <PropertyRef Name="DokumetID" />
+          </Key>
+          <Property Name="DokumetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vrsta" Type="nvarchar" MaxLength="50" />
+          <Property Name="DatumIzdavanja" Type="date" />
+          <Property Name="DatumIsteka" Type="date" />
+          <Property Name="Mesto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ekspozitura" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEkspozitura">
+          <Key>
+            <PropertyRef Name="EkspozituraID" />
+          </Key>
+          <Property Name="EkspozituraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Institucija" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="int" />
+          <Property Name="Grad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblInstitucija">
+          <Key>
+            <PropertyRef Name="InstitucijaID" />
+          </Key>
+          <Property Name="InstitucijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sediste" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblKorisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lozinka" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblOsiguranje">
+          <Key>
+            <PropertyRef Name="OsiguranjeID" />
+          </Key>
+          <Property Name="OsiguranjeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojPolise" Type="int" Nullable="false" />
+          <Property Name="VrstaOsiguranja" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblPoljoprivrednoGazdinstvo">
+          <Key>
+            <PropertyRef Name="PoljoprivrednoGazdinstvoID" />
+          </Key>
+          <Property Name="PoljoprivrednoGazdinstvoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vlasnik" Type="int" />
+          <Property Name="Povrsina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Registracija" Type="int" />
+          <Property Name="Osiguranje" Type="int" />
+          <Property Name="Dokumentacija" Type="int" />
+        </EntityType>
+        <EntityType Name="tblRegistracija">
+          <Key>
+            <PropertyRef Name="RegistracijaID" />
+          </Key>
+          <Property Name="RegistracijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumRegistracije" Type="date" />
+          <Property Name="DatumIsteka" Type="date" />
+          <Property Name="Cena" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistarskiBroj" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblVlasnik">
+          <Key>
+            <PropertyRef Name="VlasnikID" />
+          </Key>
+          <Property Name="VlasnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="int" Nullable="false" />
+          <Property Name="Dokumentacija" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwDokumentacija' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwDokumentacija">
+          <Key>
+            <PropertyRef Name="DokumetID" />
+            <PropertyRef Name="Ekspozitura" />
+          </Key>
+          <Property Name="DokumetID" Type="int" Nullable="false" />
+          <Property Name="Vrsta" Type="nvarchar" MaxLength="50" />
+          <Property Name="DatumIzdavanja" Type="date" />
+          <Property Name="DatumIsteka" Type="date" />
+          <Property Name="Mesto" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ekspozitura" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwEkspozitura' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwEkspozitura">
+          <Key>
+            <PropertyRef Name="EkspozituraID" />
+            <PropertyRef Name="Institucija" />
+          </Key>
+          <Property Name="EkspozituraID" Type="int" Nullable="false" />
+          <Property Name="Institucija" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="int" />
+          <Property Name="Grad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwInstitucija' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwInstitucija">
+          <Key>
+            <PropertyRef Name="InstitucijaID" />
+          </Key>
+          <Property Name="InstitucijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sediste" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwKorisnik' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwKorisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KorisnickoIme" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lozinka" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwOsiguranje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwOsiguranje">
+          <Key>
+            <PropertyRef Name="OsiguranjeID" />
+            <PropertyRef Name="BrojPolise" />
+          </Key>
+          <Property Name="OsiguranjeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojPolise" Type="int" Nullable="false" />
+          <Property Name="VrstaOsiguranja" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwPoljoprivrednoGazdinstvo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwPoljoprivrednoGazdinstvo">
+          <Key>
+            <PropertyRef Name="PoljoprivrednoGazdinstvoID" />
+            <PropertyRef Name="BrojPolise" />
+            <PropertyRef Name="RegistarskiBroj" />
+          </Key>
+          <Property Name="PoljoprivrednoGazdinstvoID" Type="int" Nullable="false" />
+          <Property Name="Vlasnik" Type="int" />
+          <Property Name="Povrsina" Type="nvarchar" MaxLength="50" />
+          <Property Name="Registracija" Type="int" />
+          <Property Name="Osiguranje" Type="int" />
+          <Property Name="Dokumentacija" Type="int" />
+          <Property Name="Vrsta" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrojPolise" Type="int" Nullable="false" />
+          <Property Name="RegistarskiBroj" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VlasnikIme" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwRegistracija' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwRegistracija">
+          <Key>
+            <PropertyRef Name="RegistracijaID" />
+            <PropertyRef Name="RegistarskiBroj" />
+          </Key>
+          <Property Name="RegistracijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatumRegistracije" Type="date" />
+          <Property Name="DatumIsteka" Type="date" />
+          <Property Name="Cena" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegistarskiBroj" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RegistracijaPoljoprivrednihGazdinstava.dbo.vwVlasnik' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwVlasnik">
+          <Key>
+            <PropertyRef Name="VlasnikID" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Dokumentacija" />
+          </Key>
+          <Property Name="VlasnikID" Type="int" Nullable="false" />
+          <Property Name="Adresa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Grad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="int" Nullable="false" />
+          <Property Name="Dokumentacija" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Prezime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vrsta" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_tblDokumetacija_tblEkspozitura">
+          <End Role="tblEkspozitura" Type="Self.tblEkspozitura" Multiplicity="1" />
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEkspozitura">
+              <PropertyRef Name="EkspozituraID" />
+            </Principal>
+            <Dependent Role="tblDokumetacija">
+              <PropertyRef Name="Ekspozitura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEkspozitura_tblInstitucija">
+          <End Role="tblInstitucija" Type="Self.tblInstitucija" Multiplicity="1" />
+          <End Role="tblEkspozitura" Type="Self.tblEkspozitura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInstitucija">
+              <PropertyRef Name="InstitucijaID" />
+            </Principal>
+            <Dependent Role="tblEkspozitura">
+              <PropertyRef Name="Institucija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija">
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDokumetacija">
+              <PropertyRef Name="DokumetID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Dokumentacija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje">
+          <End Role="tblOsiguranje" Type="Self.tblOsiguranje" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOsiguranje">
+              <PropertyRef Name="OsiguranjeID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Osiguranje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblRegistracija">
+          <End Role="tblRegistracija" Type="Self.tblRegistracija" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegistracija">
+              <PropertyRef Name="RegistracijaID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Registracija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblVlasnik">
+          <End Role="tblVlasnik" Type="Self.tblVlasnik" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVlasnik">
+              <PropertyRef Name="VlasnikID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Vlasnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVlasnik_tblDokumetacija">
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="1" />
+          <End Role="tblVlasnik" Type="Self.tblVlasnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDokumetacija">
+              <PropertyRef Name="DokumetID" />
+            </Principal>
+            <Dependent Role="tblVlasnik">
+              <PropertyRef Name="Dokumentacija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RegistracijaPoljoprivrednihGazdinstavaModelStoreContainer">
+          <EntitySet Name="tblDokumetacija" EntityType="Self.tblDokumetacija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEkspozitura" EntityType="Self.tblEkspozitura" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInstitucija" EntityType="Self.tblInstitucija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKorisnik" EntityType="Self.tblKorisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOsiguranje" EntityType="Self.tblOsiguranje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPoljoprivrednoGazdinstvo" EntityType="Self.tblPoljoprivrednoGazdinstvo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegistracija" EntityType="Self.tblRegistracija" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVlasnik" EntityType="Self.tblVlasnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwDokumentacija" EntityType="Self.vwDokumentacija" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwDokumentacija].[DokumetID] AS [DokumetID], 
+    [vwDokumentacija].[Vrsta] AS [Vrsta], 
+    [vwDokumentacija].[DatumIzdavanja] AS [DatumIzdavanja], 
+    [vwDokumentacija].[DatumIsteka] AS [DatumIsteka], 
+    [vwDokumentacija].[Mesto] AS [Mesto], 
+    [vwDokumentacija].[Ekspozitura] AS [Ekspozitura], 
+    [vwDokumentacija].[Adresa] AS [Adresa]
+    FROM [dbo].[vwDokumentacija] AS [vwDokumentacija]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwEkspozitura" EntityType="Self.vwEkspozitura" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwEkspozitura].[EkspozituraID] AS [EkspozituraID], 
+    [vwEkspozitura].[Institucija] AS [Institucija], 
+    [vwEkspozitura].[Adresa] AS [Adresa], 
+    [vwEkspozitura].[Telefon] AS [Telefon], 
+    [vwEkspozitura].[Grad] AS [Grad], 
+    [vwEkspozitura].[Naziv] AS [Naziv]
+    FROM [dbo].[vwEkspozitura] AS [vwEkspozitura]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwInstitucija" EntityType="Self.vwInstitucija" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwInstitucija].[InstitucijaID] AS [InstitucijaID], 
+    [vwInstitucija].[Naziv] AS [Naziv], 
+    [vwInstitucija].[Sediste] AS [Sediste]
+    FROM [dbo].[vwInstitucija] AS [vwInstitucija]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwKorisnik" EntityType="Self.vwKorisnik" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwKorisnik].[KorisnikID] AS [KorisnikID], 
+    [vwKorisnik].[KorisnickoIme] AS [KorisnickoIme], 
+    [vwKorisnik].[Lozinka] AS [Lozinka]
+    FROM [dbo].[vwKorisnik] AS [vwKorisnik]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwOsiguranje" EntityType="Self.vwOsiguranje" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwOsiguranje].[OsiguranjeID] AS [OsiguranjeID], 
+    [vwOsiguranje].[BrojPolise] AS [BrojPolise], 
+    [vwOsiguranje].[VrstaOsiguranja] AS [VrstaOsiguranja]
+    FROM [dbo].[vwOsiguranje] AS [vwOsiguranje]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwPoljoprivrednoGazdinstvo" EntityType="Self.vwPoljoprivrednoGazdinstvo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwPoljoprivrednoGazdinstvo].[PoljoprivrednoGazdinstvoID] AS [PoljoprivrednoGazdinstvoID], 
+    [vwPoljoprivrednoGazdinstvo].[Vlasnik] AS [Vlasnik], 
+    [vwPoljoprivrednoGazdinstvo].[Povrsina] AS [Povrsina], 
+    [vwPoljoprivrednoGazdinstvo].[Registracija] AS [Registracija], 
+    [vwPoljoprivrednoGazdinstvo].[Osiguranje] AS [Osiguranje], 
+    [vwPoljoprivrednoGazdinstvo].[Dokumentacija] AS [Dokumentacija], 
+    [vwPoljoprivrednoGazdinstvo].[Vrsta] AS [Vrsta], 
+    [vwPoljoprivrednoGazdinstvo].[BrojPolise] AS [BrojPolise], 
+    [vwPoljoprivrednoGazdinstvo].[RegistarskiBroj] AS [RegistarskiBroj], 
+    [vwPoljoprivrednoGazdinstvo].[VlasnikIme] AS [VlasnikIme]
+    FROM [dbo].[vwPoljoprivrednoGazdinstvo] AS [vwPoljoprivrednoGazdinstvo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwRegistracija" EntityType="Self.vwRegistracija" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwRegistracija].[RegistracijaID] AS [RegistracijaID], 
+    [vwRegistracija].[DatumRegistracije] AS [DatumRegistracije], 
+    [vwRegistracija].[DatumIsteka] AS [DatumIsteka], 
+    [vwRegistracija].[Cena] AS [Cena], 
+    [vwRegistracija].[RegistarskiBroj] AS [RegistarskiBroj]
+    FROM [dbo].[vwRegistracija] AS [vwRegistracija]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vwVlasnik" EntityType="Self.vwVlasnik" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwVlasnik].[VlasnikID] AS [VlasnikID], 
+    [vwVlasnik].[Adresa] AS [Adresa], 
+    [vwVlasnik].[Grad] AS [Grad], 
+    [vwVlasnik].[Email] AS [Email], 
+    [vwVlasnik].[Telefon] AS [Telefon], 
+    [vwVlasnik].[Dokumentacija] AS [Dokumentacija], 
+    [vwVlasnik].[Ime] AS [Ime], 
+    [vwVlasnik].[Prezime] AS [Prezime], 
+    [vwVlasnik].[Vrsta] AS [Vrsta]
+    FROM [dbo].[vwVlasnik] AS [vwVlasnik]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblDokumetacija_tblEkspozitura" Association="Self.FK_tblDokumetacija_tblEkspozitura">
+            <End Role="tblEkspozitura" EntitySet="tblEkspozitura" />
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacija" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEkspozitura_tblInstitucija" Association="Self.FK_tblEkspozitura_tblInstitucija">
+            <End Role="tblInstitucija" EntitySet="tblInstitucija" />
+            <End Role="tblEkspozitura" EntitySet="tblEkspozitura" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija">
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacija" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje">
+            <End Role="tblOsiguranje" EntitySet="tblOsiguranje" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblRegistracija" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblRegistracija">
+            <End Role="tblRegistracija" EntitySet="tblRegistracija" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblVlasnik" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblVlasnik">
+            <End Role="tblVlasnik" EntitySet="tblVlasnik" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVlasnik_tblDokumetacija" Association="Self.FK_tblVlasnik_tblDokumetacija">
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacija" />
+            <End Role="tblVlasnik" EntitySet="tblVlasnik" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RegistracijaPoljoprivrednihGazdinstavaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblDokumetacija">
+          <Key>
+            <PropertyRef Name="DokumetID" />
+          </Key>
+          <Property Name="DokumetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DatumIzdavanja" Type="DateTime" Precision="0" />
+          <Property Name="DatumIsteka" Type="DateTime" Precision="0" />
+          <Property Name="Mesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ekspozitura" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEkspozitura" Relationship="Self.FK_tblDokumetacija_tblEkspozitura" FromRole="tblDokumetacija" ToRole="tblEkspozitura" />
+          <NavigationProperty Name="tblPoljoprivrednoGazdinstvoes" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija" FromRole="tblDokumetacija" ToRole="tblPoljoprivrednoGazdinstvo" />
+          <NavigationProperty Name="tblVlasniks" Relationship="Self.FK_tblVlasnik_tblDokumetacija" FromRole="tblDokumetacija" ToRole="tblVlasnik" />
+        </EntityType>
+        <EntityType Name="tblEkspozitura">
+          <Key>
+            <PropertyRef Name="EkspozituraID" />
+          </Key>
+          <Property Name="EkspozituraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Institucija" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="Int32" />
+          <Property Name="Grad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblDokumetacijas" Relationship="Self.FK_tblDokumetacija_tblEkspozitura" FromRole="tblEkspozitura" ToRole="tblDokumetacija" />
+          <NavigationProperty Name="tblInstitucija" Relationship="Self.FK_tblEkspozitura_tblInstitucija" FromRole="tblEkspozitura" ToRole="tblInstitucija" />
+        </EntityType>
+        <EntityType Name="tblInstitucija">
+          <Key>
+            <PropertyRef Name="InstitucijaID" />
+          </Key>
+          <Property Name="InstitucijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sediste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblEkspozituras" Relationship="Self.FK_tblEkspozitura_tblInstitucija" FromRole="tblInstitucija" ToRole="tblEkspozitura" />
+        </EntityType>
+        <EntityType Name="tblKorisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOsiguranje">
+          <Key>
+            <PropertyRef Name="OsiguranjeID" />
+          </Key>
+          <Property Name="OsiguranjeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojPolise" Type="Int32" Nullable="false" />
+          <Property Name="VrstaOsiguranja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblPoljoprivrednoGazdinstvoes" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje" FromRole="tblOsiguranje" ToRole="tblPoljoprivrednoGazdinstvo" />
+        </EntityType>
+        <EntityType Name="tblPoljoprivrednoGazdinstvo">
+          <Key>
+            <PropertyRef Name="PoljoprivrednoGazdinstvoID" />
+          </Key>
+          <Property Name="PoljoprivrednoGazdinstvoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vlasnik" Type="Int32" />
+          <Property Name="Povrsina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Registracija" Type="Int32" />
+          <Property Name="Osiguranje" Type="Int32" />
+          <Property Name="Dokumentacija" Type="Int32" />
+          <NavigationProperty Name="tblDokumetacija" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija" FromRole="tblPoljoprivrednoGazdinstvo" ToRole="tblDokumetacija" />
+          <NavigationProperty Name="tblOsiguranje" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje" FromRole="tblPoljoprivrednoGazdinstvo" ToRole="tblOsiguranje" />
+          <NavigationProperty Name="tblRegistracija" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblRegistracija" FromRole="tblPoljoprivrednoGazdinstvo" ToRole="tblRegistracija" />
+          <NavigationProperty Name="tblVlasnik" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblVlasnik" FromRole="tblPoljoprivrednoGazdinstvo" ToRole="tblVlasnik" />
+        </EntityType>
+        <EntityType Name="tblRegistracija">
+          <Key>
+            <PropertyRef Name="RegistracijaID" />
+          </Key>
+          <Property Name="RegistracijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatumRegistracije" Type="DateTime" Precision="0" />
+          <Property Name="DatumIsteka" Type="DateTime" Precision="0" />
+          <Property Name="Cena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistarskiBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblPoljoprivrednoGazdinstvoes" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblRegistracija" FromRole="tblRegistracija" ToRole="tblPoljoprivrednoGazdinstvo" />
+        </EntityType>
+        <EntityType Name="tblVlasnik">
+          <Key>
+            <PropertyRef Name="VlasnikID" />
+          </Key>
+          <Property Name="VlasnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="Int32" Nullable="false" />
+          <Property Name="Dokumentacija" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblDokumetacija" Relationship="Self.FK_tblVlasnik_tblDokumetacija" FromRole="tblVlasnik" ToRole="tblDokumetacija" />
+          <NavigationProperty Name="tblPoljoprivrednoGazdinstvoes" Relationship="Self.FK_tblPoljoprivrednoGazdinstvo_tblVlasnik" FromRole="tblVlasnik" ToRole="tblPoljoprivrednoGazdinstvo" />
+        </EntityType>
+        <EntityType Name="vwDokumentacija">
+          <Key>
+            <PropertyRef Name="DokumetID" />
+            <PropertyRef Name="Ekspozitura" />
+          </Key>
+          <Property Name="DokumetID" Type="Int32" Nullable="false" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DatumIzdavanja" Type="DateTime" Precision="0" />
+          <Property Name="DatumIsteka" Type="DateTime" Precision="0" />
+          <Property Name="Mesto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ekspozitura" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwEkspozitura">
+          <Key>
+            <PropertyRef Name="EkspozituraID" />
+            <PropertyRef Name="Institucija" />
+          </Key>
+          <Property Name="EkspozituraID" Type="Int32" Nullable="false" />
+          <Property Name="Institucija" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="Int32" />
+          <Property Name="Grad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwInstitucija">
+          <Key>
+            <PropertyRef Name="InstitucijaID" />
+          </Key>
+          <Property Name="InstitucijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sediste" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwKorisnik">
+          <Key>
+            <PropertyRef Name="KorisnikID" />
+          </Key>
+          <Property Name="KorisnikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KorisnickoIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwOsiguranje">
+          <Key>
+            <PropertyRef Name="OsiguranjeID" />
+            <PropertyRef Name="BrojPolise" />
+          </Key>
+          <Property Name="OsiguranjeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojPolise" Type="Int32" Nullable="false" />
+          <Property Name="VrstaOsiguranja" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwPoljoprivrednoGazdinstvo">
+          <Key>
+            <PropertyRef Name="PoljoprivrednoGazdinstvoID" />
+            <PropertyRef Name="BrojPolise" />
+            <PropertyRef Name="RegistarskiBroj" />
+          </Key>
+          <Property Name="PoljoprivrednoGazdinstvoID" Type="Int32" Nullable="false" />
+          <Property Name="Vlasnik" Type="Int32" />
+          <Property Name="Povrsina" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Registracija" Type="Int32" />
+          <Property Name="Osiguranje" Type="Int32" />
+          <Property Name="Dokumentacija" Type="Int32" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrojPolise" Type="Int32" Nullable="false" />
+          <Property Name="RegistarskiBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VlasnikIme" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vwRegistracija">
+          <Key>
+            <PropertyRef Name="RegistracijaID" />
+            <PropertyRef Name="RegistarskiBroj" />
+          </Key>
+          <Property Name="RegistracijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatumRegistracije" Type="DateTime" Precision="0" />
+          <Property Name="DatumIsteka" Type="DateTime" Precision="0" />
+          <Property Name="Cena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegistarskiBroj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vwVlasnik">
+          <Key>
+            <PropertyRef Name="VlasnikID" />
+            <PropertyRef Name="Telefon" />
+            <PropertyRef Name="Dokumentacija" />
+          </Key>
+          <Property Name="VlasnikID" Type="Int32" Nullable="false" />
+          <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Grad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="Int32" Nullable="false" />
+          <Property Name="Dokumentacija" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tblDokumetacija_tblEkspozitura">
+          <End Role="tblEkspozitura" Type="Self.tblEkspozitura" Multiplicity="1" />
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEkspozitura">
+              <PropertyRef Name="EkspozituraID" />
+            </Principal>
+            <Dependent Role="tblDokumetacija">
+              <PropertyRef Name="Ekspozitura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija">
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDokumetacija">
+              <PropertyRef Name="DokumetID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Dokumentacija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblVlasnik_tblDokumetacija">
+          <End Role="tblDokumetacija" Type="Self.tblDokumetacija" Multiplicity="1" />
+          <End Role="tblVlasnik" Type="Self.tblVlasnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDokumetacija">
+              <PropertyRef Name="DokumetID" />
+            </Principal>
+            <Dependent Role="tblVlasnik">
+              <PropertyRef Name="Dokumentacija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEkspozitura_tblInstitucija">
+          <End Role="tblInstitucija" Type="Self.tblInstitucija" Multiplicity="1" />
+          <End Role="tblEkspozitura" Type="Self.tblEkspozitura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblInstitucija">
+              <PropertyRef Name="InstitucijaID" />
+            </Principal>
+            <Dependent Role="tblEkspozitura">
+              <PropertyRef Name="Institucija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje">
+          <End Role="tblOsiguranje" Type="Self.tblOsiguranje" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblOsiguranje">
+              <PropertyRef Name="OsiguranjeID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Osiguranje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblRegistracija">
+          <End Role="tblRegistracija" Type="Self.tblRegistracija" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblRegistracija">
+              <PropertyRef Name="RegistracijaID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Registracija" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblPoljoprivrednoGazdinstvo_tblVlasnik">
+          <End Role="tblVlasnik" Type="Self.tblVlasnik" Multiplicity="0..1" />
+          <End Role="tblPoljoprivrednoGazdinstvo" Type="Self.tblPoljoprivrednoGazdinstvo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVlasnik">
+              <PropertyRef Name="VlasnikID" />
+            </Principal>
+            <Dependent Role="tblPoljoprivrednoGazdinstvo">
+              <PropertyRef Name="Vlasnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RegistracijaPoljoprivrednihGazdinstavaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblDokumetacijas" EntityType="Self.tblDokumetacija" />
+          <EntitySet Name="tblEkspozituras" EntityType="Self.tblEkspozitura" />
+          <EntitySet Name="tblInstitucijas" EntityType="Self.tblInstitucija" />
+          <EntitySet Name="tblKorisniks" EntityType="Self.tblKorisnik" />
+          <EntitySet Name="tblOsiguranjes" EntityType="Self.tblOsiguranje" />
+          <EntitySet Name="tblPoljoprivrednoGazdinstvoes" EntityType="Self.tblPoljoprivrednoGazdinstvo" />
+          <EntitySet Name="tblRegistracijas" EntityType="Self.tblRegistracija" />
+          <EntitySet Name="tblVlasniks" EntityType="Self.tblVlasnik" />
+          <EntitySet Name="vwDokumentacijas" EntityType="Self.vwDokumentacija" />
+          <EntitySet Name="vwEkspozituras" EntityType="Self.vwEkspozitura" />
+          <EntitySet Name="vwInstitucijas" EntityType="Self.vwInstitucija" />
+          <EntitySet Name="vwKorisniks" EntityType="Self.vwKorisnik" />
+          <EntitySet Name="vwOsiguranjes" EntityType="Self.vwOsiguranje" />
+          <EntitySet Name="vwPoljoprivrednoGazdinstvoes" EntityType="Self.vwPoljoprivrednoGazdinstvo" />
+          <EntitySet Name="vwRegistracijas" EntityType="Self.vwRegistracija" />
+          <EntitySet Name="vwVlasniks" EntityType="Self.vwVlasnik" />
+          <AssociationSet Name="FK_tblDokumetacija_tblEkspozitura" Association="Self.FK_tblDokumetacija_tblEkspozitura">
+            <End Role="tblEkspozitura" EntitySet="tblEkspozituras" />
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacijas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblDokumetacija">
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacijas" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblVlasnik_tblDokumetacija" Association="Self.FK_tblVlasnik_tblDokumetacija">
+            <End Role="tblDokumetacija" EntitySet="tblDokumetacijas" />
+            <End Role="tblVlasnik" EntitySet="tblVlasniks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEkspozitura_tblInstitucija" Association="Self.FK_tblEkspozitura_tblInstitucija">
+            <End Role="tblInstitucija" EntitySet="tblInstitucijas" />
+            <End Role="tblEkspozitura" EntitySet="tblEkspozituras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblOsiguranje">
+            <End Role="tblOsiguranje" EntitySet="tblOsiguranjes" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblRegistracija" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblRegistracija">
+            <End Role="tblRegistracija" EntitySet="tblRegistracijas" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblPoljoprivrednoGazdinstvo_tblVlasnik" Association="Self.FK_tblPoljoprivrednoGazdinstvo_tblVlasnik">
+            <End Role="tblVlasnik" EntitySet="tblVlasniks" />
+            <End Role="tblPoljoprivrednoGazdinstvo" EntitySet="tblPoljoprivrednoGazdinstvoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RegistracijaPoljoprivrednihGazdinstavaModelStoreContainer" CdmEntityContainer="RegistracijaPoljoprivrednihGazdinstavaEntities">
+          <EntitySetMapping Name="tblDokumetacijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblDokumetacija">
+              <MappingFragment StoreEntitySet="tblDokumetacija">
+                <ScalarProperty Name="DokumetID" ColumnName="DokumetID" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="DatumIzdavanja" ColumnName="DatumIzdavanja" />
+                <ScalarProperty Name="DatumIsteka" ColumnName="DatumIsteka" />
+                <ScalarProperty Name="Mesto" ColumnName="Mesto" />
+                <ScalarProperty Name="Ekspozitura" ColumnName="Ekspozitura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEkspozituras">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblEkspozitura">
+              <MappingFragment StoreEntitySet="tblEkspozitura">
+                <ScalarProperty Name="EkspozituraID" ColumnName="EkspozituraID" />
+                <ScalarProperty Name="Institucija" ColumnName="Institucija" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInstitucijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblInstitucija">
+              <MappingFragment StoreEntitySet="tblInstitucija">
+                <ScalarProperty Name="InstitucijaID" ColumnName="InstitucijaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sediste" ColumnName="Sediste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKorisniks">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblKorisnik">
+              <MappingFragment StoreEntitySet="tblKorisnik">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOsiguranjes">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblOsiguranje">
+              <MappingFragment StoreEntitySet="tblOsiguranje">
+                <ScalarProperty Name="OsiguranjeID" ColumnName="OsiguranjeID" />
+                <ScalarProperty Name="BrojPolise" ColumnName="BrojPolise" />
+                <ScalarProperty Name="VrstaOsiguranja" ColumnName="VrstaOsiguranja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPoljoprivrednoGazdinstvoes">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblPoljoprivrednoGazdinstvo">
+              <MappingFragment StoreEntitySet="tblPoljoprivrednoGazdinstvo">
+                <ScalarProperty Name="PoljoprivrednoGazdinstvoID" ColumnName="PoljoprivrednoGazdinstvoID" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+                <ScalarProperty Name="Povrsina" ColumnName="Povrsina" />
+                <ScalarProperty Name="Registracija" ColumnName="Registracija" />
+                <ScalarProperty Name="Osiguranje" ColumnName="Osiguranje" />
+                <ScalarProperty Name="Dokumentacija" ColumnName="Dokumentacija" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegistracijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblRegistracija">
+              <MappingFragment StoreEntitySet="tblRegistracija">
+                <ScalarProperty Name="RegistracijaID" ColumnName="RegistracijaID" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="DatumIsteka" ColumnName="DatumIsteka" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="RegistarskiBroj" ColumnName="RegistarskiBroj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVlasniks">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.tblVlasnik">
+              <MappingFragment StoreEntitySet="tblVlasnik">
+                <ScalarProperty Name="VlasnikID" ColumnName="VlasnikID" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Dokumentacija" ColumnName="Dokumentacija" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwDokumentacijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwDokumentacija">
+              <MappingFragment StoreEntitySet="vwDokumentacija">
+                <ScalarProperty Name="DokumetID" ColumnName="DokumetID" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="DatumIzdavanja" ColumnName="DatumIzdavanja" />
+                <ScalarProperty Name="DatumIsteka" ColumnName="DatumIsteka" />
+                <ScalarProperty Name="Mesto" ColumnName="Mesto" />
+                <ScalarProperty Name="Ekspozitura" ColumnName="Ekspozitura" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwEkspozituras">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwEkspozitura">
+              <MappingFragment StoreEntitySet="vwEkspozitura">
+                <ScalarProperty Name="EkspozituraID" ColumnName="EkspozituraID" />
+                <ScalarProperty Name="Institucija" ColumnName="Institucija" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwInstitucijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwInstitucija">
+              <MappingFragment StoreEntitySet="vwInstitucija">
+                <ScalarProperty Name="InstitucijaID" ColumnName="InstitucijaID" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Sediste" ColumnName="Sediste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwKorisniks">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwKorisnik">
+              <MappingFragment StoreEntitySet="vwKorisnik">
+                <ScalarProperty Name="KorisnikID" ColumnName="KorisnikID" />
+                <ScalarProperty Name="KorisnickoIme" ColumnName="KorisnickoIme" />
+                <ScalarProperty Name="Lozinka" ColumnName="Lozinka" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwOsiguranjes">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwOsiguranje">
+              <MappingFragment StoreEntitySet="vwOsiguranje">
+                <ScalarProperty Name="OsiguranjeID" ColumnName="OsiguranjeID" />
+                <ScalarProperty Name="BrojPolise" ColumnName="BrojPolise" />
+                <ScalarProperty Name="VrstaOsiguranja" ColumnName="VrstaOsiguranja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwPoljoprivrednoGazdinstvoes">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwPoljoprivrednoGazdinstvo">
+              <MappingFragment StoreEntitySet="vwPoljoprivrednoGazdinstvo">
+                <ScalarProperty Name="PoljoprivrednoGazdinstvoID" ColumnName="PoljoprivrednoGazdinstvoID" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+                <ScalarProperty Name="Povrsina" ColumnName="Povrsina" />
+                <ScalarProperty Name="Registracija" ColumnName="Registracija" />
+                <ScalarProperty Name="Osiguranje" ColumnName="Osiguranje" />
+                <ScalarProperty Name="Dokumentacija" ColumnName="Dokumentacija" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="BrojPolise" ColumnName="BrojPolise" />
+                <ScalarProperty Name="RegistarskiBroj" ColumnName="RegistarskiBroj" />
+                <ScalarProperty Name="VlasnikIme" ColumnName="VlasnikIme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwRegistracijas">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwRegistracija">
+              <MappingFragment StoreEntitySet="vwRegistracija">
+                <ScalarProperty Name="RegistracijaID" ColumnName="RegistracijaID" />
+                <ScalarProperty Name="DatumRegistracije" ColumnName="DatumRegistracije" />
+                <ScalarProperty Name="DatumIsteka" ColumnName="DatumIsteka" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="RegistarskiBroj" ColumnName="RegistarskiBroj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwVlasniks">
+            <EntityTypeMapping TypeName="RegistracijaPoljoprivrednihGazdinstavaModel.vwVlasnik">
+              <MappingFragment StoreEntitySet="vwVlasnik">
+                <ScalarProperty Name="VlasnikID" ColumnName="VlasnikID" />
+                <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+                <ScalarProperty Name="Grad" ColumnName="Grad" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Dokumentacija" ColumnName="Dokumentacija" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

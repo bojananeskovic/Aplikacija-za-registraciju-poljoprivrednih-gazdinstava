@@ -1,0 +1,33 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblOsiguranje
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Informacije o osiguranju</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojPolise)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrojPolise)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VrstaOsiguranja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VrstaOsiguranja)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Izmeni", "Edit", new { id = Model.OsiguranjeID }) |
+    @Html.ActionLink("Lista osiguranja", "Index")
+</p>

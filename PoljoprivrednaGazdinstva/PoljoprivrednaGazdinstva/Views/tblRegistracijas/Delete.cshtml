@@ -1,0 +1,55 @@
+﻿@model PoljoprivrednaGazdinstva.Models.tblRegistracija
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Brisanje registracije</h2>
+
+<h3>Da li ste sigurni?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumRegistracije)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumRegistracije)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumIsteka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatumIsteka)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistarskiBroj)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistarskiBroj)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obrisi" class="btn btn-default" /> |
+            @Html.ActionLink("Lista registracija", "Index")
+        </div>
+    }
+</div>
